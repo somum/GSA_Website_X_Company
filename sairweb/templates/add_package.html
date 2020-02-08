@@ -1,0 +1,48 @@
+{% extends 'basic-dark.html' %}
+
+{% block body %}
+<div class="container"  style="margin-bottom:200px; margin-top:100px;">
+ <h1><b>Add Package</b></h1>
+ <div class="col-lg-3"></div>
+ <div class="col-lg-6" >
+  <form enctype="multipart/form-data" method="post">{% csrf_token %}
+
+      <div class="form-group">
+      <label for="pkg_name" > Package Name</label>
+      <input type="text" class="form-control" id="pkg_name" name='pkg_name' placeholder="Enter Package Name">
+    </div>
+
+      <div class="form-group">
+      <label for="pkg_dest_name" > Package Destination Name</label>
+      <input type="text" class="form-control" id="pkg_dest_name" name='pkg_dest_name' placeholder="Enter Package Destination Name">
+    </div>
+
+      <div class="form-group">
+      <label for="pkg_rating" > Package Rating</label>
+      <input type="text" class="form-control" id="pkg_rating" name='pkg_rating' placeholder="Enter Package Rating">
+    </div>
+
+      <div class="form-group">
+      <label for="pkg_price" > Package Price</label>
+      <input type="text" class="form-control" id="pkg_price" name='pkg_price' placeholder="Enter Package Price">
+    </div>
+
+      <div class="form-group">
+      <label for="pkg_desc" > Package Description</label>
+      <textarea class="form-control" id="pkg_desc" name='pkg_desc' placeholder="Enter Package Description"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="pkg_img" > Package Image</label>
+      <input type="file" name="pkg_img" id="pkg_img" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+<div class="col-lg-3"></div>
+</div>
+
+
+</div>
+{% endblock %}

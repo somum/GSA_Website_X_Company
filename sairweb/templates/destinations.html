@@ -1,0 +1,86 @@
+{% extends 'basic.html' %}
+
+{% block body %}
+{% load static %}
+
+<div class="hero-wrap js" style="background-image: url({% static 'sairweb/images/bg_2.jpg' %}); height:300px;">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js align-items-center justify-content-center"  data-scrollax-parent="true">
+          <div class="col-md-9 ftco-animate text-center" style="margin-top:140px;" data-scrollax=" properties: { translateY: '70%' }">
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Destinations</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+{% for i in destination %}
+
+{% if forloop.counter|divisibleby:2 == 0 %}
+    <section class="ftco-section" style="margin-top:200px; background-color:white;" >
+            <div class="container">
+                <div class="row d-md-flex">
+                    <div class="col-md-6 ftco-animate img about-image" style="background-image: url(/media/{{i.dest_img}});">
+                    </div>
+                    <div class="col-md-6 ftco-animate p-md-5">
+                        <div class="row">
+                      <div class="col-md-12 nav-link-wrap mb-5">
+                        <div class="nav ftco-animate nav-pills"  role="tablist" aria-orientation="vertical">
+                          <span class="nav-link active" data-toggle="pill" href="#v-pills-whatwedo" role="tab" aria-controls="v-pills-whatwedo" aria-selected="true">{{i.dest_name}}</span>
+                        </div>
+                      </div>
+
+                      <div class="col-md-12 d-flex align-items-center">
+
+                        <div class="tab-content ftco-animate">
+
+                          <div class="tab-pane fade show active"  role="tabpanel" aria-labelledby="v-pills-whatwedo-tab">
+                            <div>
+                                <p align="justify">{{i.dest_desc}}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+    </section>
+
+{% elif forloop.counter|divisibleby:2 == 1 %}
+    <section class="ftco-section" style="margin-top:200px; background-color:#f8faff;" >
+            <div class="container">
+                <div class="row d-md-flex">
+                    <div class="col-md-6 ftco-animate img about-image" style="background-image: url(/media/{{i.dest_img}});">
+                    </div>
+                    <div class="col-md-6 ftco-animate p-md-5">
+                        <div class="row">
+                      <div class="col-md-12 nav-link-wrap mb-5">
+                        <div class="nav ftco-animate nav-pills"  role="tablist" aria-orientation="vertical">
+                          <span class="nav-link active"  data-toggle="pill" href="#v-pills-whatwedo" role="tab" aria-controls="v-pills-whatwedo" aria-selected="true">{{i.dest_name}}</span>
+                        </div>
+                      </div>
+
+                      <div class="col-md-12 d-flex align-items-center">
+
+                        <div class="tab-content ftco-animate">
+
+                          <div class="tab-pane fade show active" id="" role="tabpanel" aria-labelledby="v-pills-whatwedo-tab">
+                            <div>
+                                <p align="justify">{{i.dest_desc}}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+    </section>
+
+{% endif %}
+
+{% endfor %}
+
+{% endblock %}

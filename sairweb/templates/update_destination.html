@@ -1,0 +1,35 @@
+{% extends 'basic.html' %}
+
+{% block body %}
+<div class="container"  style="margin-bottom:200px; margin-top:100px;">
+ <h1><b>Update Destination</b></h1>
+ <div class="col-lg-3"></div>
+ <div class="col-lg-6" >
+  <form action="/sairweb/update_dlist_info/{{plist.0.id}}" enctype="multipart/form-data" method="POST">{% csrf_token %}
+
+      <div class="form-group">
+      <label for="dest_name" > Destination Name</label>
+      <input type="text" class="form-control" id="dest_name" name='dest_name' value="{{plist.0.dest_name}}" placeholder="Enter Destination Name">
+    </div>
+
+
+    <div class="form-group">
+      <label for="dest_desc" > Destination Description</label>
+          <textarea class="form-control" id="dest_desc" name='dest_desc' value="" placeholder="Enter Package Description">{{plist.0.dest_desc}}</textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="dest_img" > Destination Image</label>
+        <img src="/media/{{plist.0.dest_img}}" alt="" style="width:200px;height:200px; border: 3px solid grey; margin-bottom:10px;margin-left:10px;" >
+      <input type="file" name="dest_img" id="dest_img" value="{{plist.0.dest_img}}" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-success">Update</button>
+  </form>
+</div>
+<div class="col-lg-3"></div>
+</div>
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends 'basic.html' %}
+
+
+{% block body%}
+
+{% load static %}
+
+<div class="hero-wrap js" style="background-image: url({% static 'sairweb/images/bg_1.jpg' %}); height:300px;">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js align-items-center justify-content-center"  data-scrollax-parent="true">
+          <div class="col-md-9 ftco-animate text-center" style="margin-top:140px;" data-scrollax=" properties: { translateY: '70%' }">
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Get In Touch</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section services-section bg-light" style="padding-bottom:35px;">
+      <div class="container">
+        <div class="row d-flex">
+        	<div class="col-md-2.5 d-flex align-self-stretch ftco-animate" style="padding-left: 55px;" >
+        		<div class="media block-6 services d-block text-center">
+              <div class="d-flex justify-content-center"><div class="icon"><span class="icon-phone"></span></div></div>
+              <div class="media-body p-2 mt-2" >
+                <h3 class="heading mb-3">Phone</h3>
+                <p>+02-58810140</p>
+              </div>
+            </div>
+        	</div>
+          <div class="col-md-1.5 d-flex align-self-stretch ftco-animate" style="padding-left: 14px;">
+            <div class="media block-6 services d-block text-center">
+              <div class="d-flex justify-content-center"><div class="icon"><span class="icon-map-marker"></span></div></div>
+              <div class="media-body p-2 mt-2">
+                <h3 class="heading mb-3">Contact Information</h3>
+                <p><span>Address:</span> B4 (4th Floor), House # 12, Road # 16/A, Gulshan # 01, Dhaka - 1212</p>
+              </div>
+            </div>
+          </div>
+                    <div class="col-md-2 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services d-block text-center">
+              <div class="d-flex justify-content-center"><div class="icon"><span class="icon-envelope"></span></div></div>
+              <div class="media-body p-2 mt-2">
+                <h3 class="heading mb-3">Email Us</h3>
+                <p>info@sairbd.com</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+		<section class="ftco-section contact-section ftco-degree-bg" style="padding-top:35px;">
+      <div class="container">
+      	<h3 class="heading mb-3">Contact Us</h3>
+
+        <div class="row block-9">
+          <div class="col-md-6 pr-md-5">
+            {% if messages %}
+                    {% for message in messages %}
+                     {% if message.tags %}
+
+                    <div class="alert alert-success" role="alert">
+                      {{message}}
+                    </div>
+
+                     {% endif %}
+
+                    {% endfor %}
+
+        {% endif %}
+            <form action="/sairweb/sentMailCustom" method="post">{% csrf_token %}
+              <div class="form-group">
+                <input type="text" name="cName" class="form-control" placeholder="Your Name" required>
+              </div>
+              <div class="form-group">
+                <input type="text" name="cEmail" class="form-control" placeholder="Your Email" required>
+              </div>
+              <div class="form-group">
+                <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+              </div>
+              <div class="form-group">
+                <textarea name="cMessage" id="" cols="30" rows="7" class="form-control" placeholder="Message" required></textarea>
+              </div>
+              <div class="form-group">
+                <input type="submit" value="Send Mail" class="btn btn-primary py-3 px-5">
+              </div>
+            </form>
+
+          </div>
+
+          <div class="col-md-6" style="max-height: 446px;" id="map">
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14604.220676369845!2d90.4136333!3d23.7810497!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x791b88da7420f32!2sSAir%20AIR%20BD%20LTD.!5e0!3m2!1sen!2sbd!4v1575366682518!5m2!1sen!2sbd" width="620" height="455" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'basic.html' %}
+
+{% block body %}
+<div class="container"  style="margin-bottom:200px; margin-top:100px;">
+ <h1><b>Update Package</b></h1>
+ <div class="col-lg-3"></div>
+ <div class="col-lg-6" >
+  <form action="/sairweb/update_plist_info/{{plist.0.id}}" enctype="multipart/form-data" method="POST">{% csrf_token %}
+
+      <div class="form-group">
+      <label for="pkg_name" > Package Name</label>
+      <input type="text" class="form-control" id="pkg_name" name='pkg_name' value="{{plist.0.pkg_name}}" placeholder="Enter Package Name">
+    </div>
+
+      <div class="form-group">
+      <label for="pkg_dest_name" > Package Destination Name</label>
+      <input type="text" class="form-control" id="pkg_dest_name" name='pkg_dest_name' value="{{plist.0.pkg_dest_name}}" placeholder="Enter Package Destination Name">
+    </div>
+
+      <div class="form-group">
+      <label for="pkg_rating" > Package Rating</label>
+      <input type="text" class="form-control" id="pkg_rating" name='pkg_rating' value="{{plist.0.pkg_rating}}" placeholder="Enter Package Rating">
+    </div>
+
+      <div class="form-group">
+      <label for="pkg_price" > Package Price</label>
+      <input type="text" class="form-control" id="pkg_price" name='pkg_price' value="{{plist.0.pkg_price}}" placeholder="Enter Package Price">
+    </div>
+
+      <div class="form-group">
+      <label for="pkg_desc" > Package Description</label>
+          <textarea class="form-control" id="pkg_desc" name='pkg_desc' value="" placeholder="Enter Package Description">{{plist.0.pkg_desc}}</textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="pkg_img" > Package Image</label>
+        <img src="/media/{{plist.0.pkg_img}}" alt="" style="width:200px;height:200px; border: 3px solid grey; margin-bottom:10px;margin-left:10px;" >
+      <input type="file" name="pkg_img" id="pkg_img" value="{{plist.0.pkg_img}}" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-success">Update</button>
+  </form>
+</div>
+<div class="col-lg-3"></div>
+</div>
+
+
+</div>
+{% endblock %}

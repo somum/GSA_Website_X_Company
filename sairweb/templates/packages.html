@@ -1,0 +1,329 @@
+{% extends 'basic.html' %}
+
+{% block body %}
+{% load static %}
+
+<div class="hero-wrap js" style="background-image: url({% static 'sairweb/images/destination-5.jpg' %}); height:300px;">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js align-items-center justify-content-center"  data-scrollax-parent="true">
+          <div class="col-md-9 ftco-animate text-center" style="margin-top:140px;" data-scrollax=" properties: { translateY: '70%' }">
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Package Details</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <section class="ftco-section ftco-degree-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 sidebar">
+            <div class="sidebar-wrap bg-light ftco-animate">
+              <h3 class="heading mb-4">Other packages</h3>
+
+                {% for i in latests %}
+                  <span class="icon icon-map-marker" style="padding-right:10px;">  </span> <a href="/sairweb/packages/{{i.id}}" style="font-size:17px;">{{i.pkg_name}}</a> </br>
+                {% endfor %}
+            </div>
+
+
+            <!---star test--->
+
+              <div class="sidebar-wrap bg-light ftco-animate">
+              <h3 class="heading mb-4">Star Rating</h3>
+              <form action="/sairweb/packageShow" method="post" class="star-rating">{% csrf_token %}
+
+
+                  <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="pstar1" value="1" id="st1" >
+                <label class="custom-control-label" for="st1"><p class="rate"><span><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p></label>
+                </div>
+
+                            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="pstar2" value="2" id="st2" >
+                <label class="custom-control-label" for="st2"><p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p></label>
+                </div>
+
+
+                  <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="pstar3" value="3" id="st3" >
+                <label class="custom-control-label" for="st3"><p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p></label>
+                </div>
+
+
+                  <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="pstar4" value="4" id="st4" >
+                <label class="custom-control-label" for="st4"><p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i></span></p></label>
+                </div>
+
+
+
+                <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="pstar5" value="5" id="st5" >
+                <label class="custom-control-label" for="st5"><p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span></p></label>
+                </div>
+
+
+
+                 <button class="btn btn-outline-danger btn-rounded btn-sm my-0" type="submit">Search</button>
+                  <a style="margin-left:10px;" class="btn btn-outline-danger btn-rounded btn-sm my-0" href="{% url 'packageShow' %}">Show all</a>
+
+              </form>
+            </div>
+
+
+              <!---star test End--->
+
+          </div>
+          <div class="col-lg-9">
+            <div class="row">
+              <div class="col-md-12 ftco-animate">
+                <div class="single-slider owl-carousel">
+                  <div class="item">
+                    <div class="hotel-img" style="background-image: url(/media/{{packages.pkg_img}});"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
+                <span>Our Best hotels &amp; Rooms</span>
+                <h2>{{packages.pkg_name}}</h2>
+                <p>Published: {{packages.pkg_created_date}}</p>
+                <p class="rate">
+										{% if packages.pkg_rating == '5' %}
+											{% for j in '12345' %}
+		    									<i class="icon-star"></i>
+											{% endfor %}
+										{% elif packages.pkg_rating == '0' %}
+											{% for j in '12345' %}
+		    									<i class="icon-star-o"></i>
+											{% endfor %}
+
+										{% elif packages.pkg_rating == '1' %}
+											{% for j in '1' %}
+		    									<i class="icon-star"></i>
+											{% endfor %}
+											{% for j in '1234' %}
+		    									<i class="icon-star-o"></i>
+											{% endfor %}
+
+										{% elif packages.pkg_rating == '2' %}
+											{% for j in '12' %}
+		    									<i class="icon-star"></i>
+											{% endfor %}
+											{% for j in '123' %}
+		    									<i class="icon-star-o"></i>
+											{% endfor %}
+
+										{% elif packages.pkg_rating == '3' %}
+											{% for j in '123' %}
+		    									<i class="icon-star"></i>
+											{% endfor %}
+											{% for j in '12' %}
+		    									<i class="icon-star-o"></i>
+											{% endfor %}
+
+										{% elif packages.pkg_rating == '4' %}
+											{% for j in '1234' %}
+		    									<i class="icon-star"></i>
+											{% endfor %}
+											{% for j in '1' %}
+		    									<i class="icon-star-o"></i>
+											{% endfor %}
+
+										{% endif %}
+		    							<span>{{packages.pkg_rating}} Rating</span>
+                <p>{{packages.pkg_desc|linebreaks }}</p>
+              <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
+                <h4 class="mb-4">Take A Tour</h4>
+                <div class="block-16">
+                  <figure>
+                    <iframe width="825" height="400" src="https://www.youtube.com/embed/eo0x481lEXY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </figure>
+                </div>
+              </div>
+
+              <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4" id="checkmsg">
+                <h4 class="mb-5">Check Availability &amp; Booking</h4>
+                {% if messages %}
+                    {% for message in messages %}
+                     {% if message.tags %}
+
+                    <div class="alert alert-success" role="alert">
+                      {{message}}
+                    </div>
+
+                     {% endif %}
+
+                    {% endfor %}
+
+                {% endif %}
+                <div class="fields">
+                    <form action="/sairweb/sentMail" method="post">{% csrf_token %}
+                  <div class="row">
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input type="text" name="cName" id="cName" class="form-control" placeholder="Name" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input type="text" name="cEmail" id="cEmail" class="form-control" placeholder="Email" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input type="text" id="checkin_date" name="checkin_date" class="form-control" placeholder="Date from" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input type="text" id="checkout_date" name="checkout_date" class="form-control" placeholder="Date to" required>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input type="text" id="guestNo" name="guestNo" class="form-control" placeholder="Guest" required>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input type="text" id="childNo" name="childNo" class="form-control" placeholder="childNo" required>
+                      </div>
+                    </div>
+
+                      <input type="text" id="pk" name="pk" class="form-control" value={{packages.id}} placeholder="childNo" hidden>
+
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <input type="submit" value="Check Availability" class="btn btn-primary py-3">
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                </div>
+              </div>
+
+              <!--<div class="col-md-12 hotel-single ftco-animate mb-5 mt-5">
+                <h4 class="mb-4">Related Hotels</h4>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="destination">
+                      <a href="hotel-single.html" class="img img-2" style="background-image: url(images/hotel-1.jpg);"></a>
+                      <div class="text p-3">
+                        <div class="d-flex">
+                          <div class="one">
+                            <h3><a href="hotel-single.html">Hotel, Italy</a></h3>
+                            <p class="rate">
+                              <i class="icon-star"></i>
+                              <i class="icon-star"></i>
+                              <i class="icon-star"></i>
+                              <i class="icon-star"></i>
+                              <i class="icon-star-o"></i>
+                              <span>8 Rating</span>
+                            </p>
+                          </div>
+                          <div class="two">
+                            <span class="price per-price">$40<br><small>/night</small></span>
+                          </div>
+                        </div>
+                        <p>Far far away, behind the word mountains, far from the countries</p>
+                        <hr>
+                        <p class="bottom-area d-flex">
+                          <span><i class="icon-map-o"></i> Miami, Fl</span>
+                          <span class="ml-auto"><a href="#">Book Now</a></span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="destination">
+                      <a href="hotel-single.html" class="img img-2" style="background-image: url(images/hotel-2.jpg);"></a>
+                      <div class="text p-3">
+                        <div class="d-flex">
+                          <div class="one">
+                            <h3><a href="hotel-single.html">Hotel, Italy</a></h3>
+                            <p class="rate">
+                              <i class="icon-star"></i>
+                              <i class="icon-star"></i>
+                              <i class="icon-star"></i>
+                              <i class="icon-star"></i>
+                              <i class="icon-star-o"></i>
+                              <span>8 Rating</span>
+                            </p>
+                          </div>
+                          <div class="two">
+                            <span class="price per-price">$40<br><small>/night</small></span>
+                          </div>
+                        </div>
+                        <p>Far far away, behind the word mountains, far from the countries</p>
+                        <hr>
+                        <p class="bottom-area d-flex">
+                          <span><i class="icon-map-o"></i> Miami, Fl</span>
+                          <span class="ml-auto"><a href="#">Book Now</a></span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="destination">
+                      <a href="hotel-single.html" class="img img-2" style="background-image: url(images/hotel-3.jpg);"></a>
+                      <div class="text p-3">
+                        <div class="d-flex">
+                          <div class="one">
+                            <h3><a href="hotel-single.html">Hotel, Italy</a></h3>
+                            <p class="rate">
+                              <i class="icon-star"></i>
+                              <i class="icon-star"></i>
+                              <i class="icon-star"></i>
+                              <i class="icon-star"></i>
+                              <i class="icon-star-o"></i>
+                              <span>8 Rating</span>
+                            </p>
+                          </div>
+                          <div class="two">
+                            <span class="price per-price">$40<br><small>/night</small></span>
+                          </div>
+                        </div>
+                        <p>Far far away, behind the word mountains, far from the countries</p>
+                        <hr>
+                        <p class="bottom-area d-flex">
+                          <span><i class="icon-map-o"></i> Miami, Fl</span>
+                          <span class="ml-auto"><a href="#">Book Now</a></span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+
+            </div>
+          </div> <!-- .col-md-8 -->
+        </div>
+      </div>
+      </div>
+
+    </section> <!-- .section -->
+
+{% endblock %}
+
+{% block js %}
+
+<script type="text/javascript">
+
+	$("#checkout_date").change(function() {
+    var startDate = document.getElementById("checkin_date").value;
+    var endDate = document.getElementById("checkout_date").value;
+
+    if ((Date.parse(endDate) <= Date.parse(startDate))) {
+      alert("Date of Check-out should be greater than Date of Check-in");
+      document.getElementById("checkout_date").value = "";
+    }
+  });
+
+</script>
+
+{% endblock%}

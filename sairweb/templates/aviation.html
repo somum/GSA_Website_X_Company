@@ -1,0 +1,61 @@
+{% extends 'basic.html' %}
+
+
+{% block body%}
+
+{% load static %}
+
+
+<div class="hero-wrap js" style="background-image: url({% static 'sairweb/images/pl.jpg' %}); height:300px;">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js align-items-center justify-content-center"  data-scrollax-parent="true">
+          <div class="col-md-9 ftco-animate text-center" style="margin-top:140px;" data-scrollax=" properties: { translateY: '70%' }">
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Aviation Management</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section services-section bg-light" style="padding-bottom:35px; margin-top: 100px;">
+      <div class="container">
+        <div class="row d-flex">
+        <div class="col-md-4 d-flex align-self-stretch ftco-animate" style="padding-left: 14px;">
+            <div class="media block-6 services d-block text-center">
+              <div class="d-flex justify-content-center"><div class="icon"></span></div></div>
+                <a href="https://www.himalaya-airlines.com/contact/gsa-addresses#cloake863363176d76228cef8c2a95d3b865c">
+              <div class="media-body p-2 mt-2">
+                  <h3 class="heading mb-3" align="center">Himalaya Airlines</h3>
+                  <img src="{% static 'sairweb/images/ra.jpg' %}" style="height: 220px; width: 320px; border-radius: 8%;">
+              </div>
+                </a>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex align-self-stretch ftco-animate" style="padding-left: 14px;">
+            <div class="media block-6 services d-block text-center">
+              <div class="d-flex justify-content-center"><div class="icon"></span></div></div>
+                <a href="https://www.vietjetair.com/Sites/Web/en-US/NewsDetail/booking-agents/%201657/booking-agents/#ctl00_ContentPlaceHolder1_UcNewDetail1_LblContent">
+              <div class="media-body p-2 mt-2">
+                    <h3 class="heading mb-3" align="center">Vietjet Airlines</h3>
+                    <img src="{% static 'sairweb/images/vj.jpg' %}" style="height: 220px; width: 320px; border-radius: 8%;">
+              </div>
+                </a>
+            </div>
+          </div>
+
+           <div class="col-md-4 d-flex align-self-stretch ftco-animate" style="padding-left: 14px;">
+            <div class="media block-6 services d-block text-center">
+              <div class="d-flex justify-content-center"><div class="icon"></span></div></div>
+                <a href="https://www.nokair.com/">
+              <div class="media-body p-2 mt-2">
+                  <h3 class="heading mb-3" align="center">NOK AIR</h3>
+                  <img src="{% static 'sairweb/images/nok.jpg' %}" style="height: 220px; width: 320px; border-radius: 8%;">
+              </div>
+                </a>
+            </div>
+          </div>
+          </div>
+      </div>
+    </section>
+
+{% endblock %}

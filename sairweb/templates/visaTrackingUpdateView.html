@@ -1,0 +1,410 @@
+{% extends 'basic.html' %}
+
+{% block css %}
+.zoom {
+
+  transition: transform .2s;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(5);
+}
+{% endblock %}
+
+{% block body%}
+
+{% load static %}
+
+<div class="hero-wrap js-fullheight" style="background-image: url({% static 'sairweb/images/track.jpg' %});">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+            <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span></p>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Visa Information</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <style>
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+  margin: auto;
+  padding:20px;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+
+
+<!-- for tracking bar -->
+
+ol.progtrckr {
+    margin: 0;
+    padding: 0;
+    list-style-type none;
+}
+
+ol.progtrckr li {
+    display: inline-block;
+    text-align: center;
+    line-height: 3.0em;
+}
+
+ol.progtrckr[data-progtrckr-steps="2"] li { width: 49%; }
+ol.progtrckr[data-progtrckr-steps="3"] li { width: 33%; }
+ol.progtrckr[data-progtrckr-steps="4"] li { width: 24%; }
+ol.progtrckr[data-progtrckr-steps="5"] li { width: 19%; }
+ol.progtrckr[data-progtrckr-steps="6"] li { width: 16%; }
+ol.progtrckr[data-progtrckr-steps="7"] li { width: 14%; }
+ol.progtrckr[data-progtrckr-steps="8"] li { width: 12%; }
+ol.progtrckr[data-progtrckr-steps="9"] li { width: 11%; }
+
+ol.progtrckr li.progtrckr-done {
+    color: black;
+    border-bottom: 4px solid yellowgreen;
+}
+ol.progtrckr li.progtrckr-todo {
+    color: silver;
+    border-bottom: 4px solid silver;
+}
+
+ol.progtrckr li:after {
+    content: "\00a0\00a0";
+}
+ol.progtrckr li:before {
+    position: relative;
+    bottom: -2.5em;
+    float: left;
+    left: 50%;
+    line-height: 1em;
+}
+ol.progtrckr li.progtrckr-done:before {
+    content: "\2713";
+    color: white;
+    background-color: yellowgreen;
+    height: 1.2em;
+    width: 1.2em;
+    line-height: 1.2em;
+    border: none;
+    border-radius: 1.2em;
+}
+ol.progtrckr li.progtrckr-todo:before {
+    content: "\039F";
+    color: silver;
+    background-color: white;
+    font-size: 1.2em;
+    bottom: -2.1em;
+}
+
+
+</style>
+
+
+
+<div style="margin-top:50px; margin-bottom:100px;">
+
+<h1 style="text-align:center; font-weight: bold;">Information</h1>
+
+
+
+<div class="card">
+
+  <form action="/sairweb/visaTrackingUpdate/{{visa.0.visa_id}}" enctype="multipart/form-data" method="post">{% csrf_token %}
+
+      <div class="form-group">
+          <label for="visa_id" >Reference Number :</label>
+      <input class="form-control" id="visa_id" name='visa_id' value="{{visa.0.visa_id}}" >
+      </div>
+
+      <div class="form-group">
+
+          <label for="fname" >Full Name :</label>
+      <input class="form-control" id="fname" name='fname' value="{{visa.0.fname}}" >
+
+      </div>
+
+      <div class="form-group">
+
+          <label for="contactNo" >Contact No :</label>
+      <input class="form-control" id="contactNo" name='contactNo' value="{{visa.0.contactNo}}" >
+
+      </div>
+
+        <div class="form-group">
+
+          <label for="passport_no" >Passport Number :</label>
+      <input class="form-control" id="passport_no" name='passport_no' value="{{visa.0.passport_no}}" >
+
+      </div>
+
+        <div class="form-group">
+
+          <label for="dob" >Date of Birth :</label>
+            <input class="form-control" id="dob" name="dob" type="date" value="{{visa.0.dob|date:'Y-m-d'}}" >
+
+      </div>
+
+
+      <div class="row">
+		 <div class="form-group col-md-6" style="padding-left: 15px;">
+             <label for="dob" >Visa Country :</label>
+			<div class="select-wrap one-third">
+			        <input class="form-control" type="text" list="vCountry1" value="{{visa.0.vCountry}}" name="vCountry" placeholder="Select Country"  />
+                        <datalist name="vCountry1" id="vCountry1">
+                        <option value="China">China</option>
+                        <option value="Egypt">Egypt</option>
+                        <option value="Malaysia">Malaysia</option>
+                        <option value="Mayanmar">Mayanmar</option>
+                        <option value="Singapore">Singapore</option>
+                        <option value="Srilanka">Srilanka</option>
+			            <option value="Thailand">Thailand</option>
+			            <option value="Vietnam">Vietnam</option>
+
+                        </datalist>
+			     </div>
+			</div>
+
+
+
+        <div class="form-group col-md-6" style="padding-right: 15px;">
+           <label for="dob" >Visa Type :</label>
+			<div class="select-wrap one-third">
+			        <input class="form-control" type="text" list="vtype1" id="visa_type" name='visa_type' value="{{visa.0.visa_type}}" placeholder="Select Type" required/>
+                        <datalist name="vtype1" id="vtype1">
+                        <option value="Tourist">Tourist</option>
+                        <option value="Business">Business</option>
+                        </datalist>
+			     </div>
+			</div>
+        </div>
+
+        <div class="form-group">
+
+          <label >Visa Status :</label></br>
+
+
+            <!----my Test--->
+            {% if visa.0.visa_status == '4' %}
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="visa_status" value="1" id="received" checked>
+                <label class="custom-control-label" for="received">Received from client</label>
+            </div>
+
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" name="visa_status" value="2" class="custom-control-input" id="submit" checked>
+                <label class="custom-control-label"  for="submit">Submitted (Embassy)</label>
+            </div>
+
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="visa_status" value="3" id="collect" checked>
+                <label class="custom-control-label"  for="collect">Collected (Embassy)</label>
+            </div>
+
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="visa_status" value="4" id="delivered" checked>
+                <label class="custom-control-label" for="delivered">Delivered to client</label>
+            </div>
+
+			{% elif visa.0.visa_status == '0' %}
+                <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="visa_status" value="1" id="received">
+                <label class="custom-control-label" for="received">Received from client</label>
+            </div>
+
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" name="visa_status" value="2" class="custom-control-input" id="submit">
+                <label class="custom-control-label"  for="submit">Submitted (Embassy)</label>
+            </div>
+
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="visa_status" value="3" id="collect">
+                <label class="custom-control-label"  for="collect">Collected (Embassy)</label>
+            </div>
+
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="visa_status" value="4" id="delivered">
+                <label class="custom-control-label" for="delivered">Delivered to client</label>
+            </div>
+
+			{% elif visa.0.visa_status == '1' %}
+
+			    <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="visa_status" value="1" id="received" checked>
+                <label class="custom-control-label" for="received">Received from client</label>
+            </div>
+
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" name="visa_status" value="2" class="custom-control-input" id="submit" >
+                <label class="custom-control-label"  for="submit">Submitted (Embassy)</label>
+            </div>
+
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="visa_status" value="3" id="collect" >
+                <label class="custom-control-label"  for="collect">Collected (Embassy)</label>
+            </div>
+
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="visa_status" value="4" id="delivered" >
+                <label class="custom-control-label" for="delivered">Delivered to client</label>
+            </div>
+
+			{% elif visa.0.visa_status == '2' %}
+                <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="visa_status" value="1" id="received" checked>
+                <label class="custom-control-label" for="received">Received from client</label>
+            </div>
+
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" name="visa_status" value="2" class="custom-control-input" id="submit" checked>
+                <label class="custom-control-label"  for="submit">Submitted (Embassy)</label>
+            </div>
+
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="visa_status" value="3" id="collect" >
+                <label class="custom-control-label"  for="collect">Collected (Embassy)</label>
+            </div>
+
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="visa_status" value="4" id="delivered" >
+                <label class="custom-control-label" for="delivered">Delivered to client</label>
+            </div>
+
+
+			{% elif visa.0.visa_status == '3' %}
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="visa_status" value="1" id="received" checked>
+                <label class="custom-control-label" for="received">Received from client</label>
+            </div>
+
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" name="visa_status" value="2" class="custom-control-input" id="submit" checked>
+                <label class="custom-control-label"  for="submit">Submitted (Embassy)</label>
+            </div>
+
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="visa_status" value="3" id="collect" checked>
+                <label class="custom-control-label"  for="collect">Collected (Embassy)</label>
+            </div>
+
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="visa_status" value="4" id="delivered" >
+                <label class="custom-control-label" for="delivered">Delivered to client</label>
+            </div>
+			{% endif %}
+            <!----my Test End--->
+
+
+
+        </div>
+
+
+
+      <div class="form-group">
+      <label for="visa_img" > Client Files</label>
+         <div class="row" >
+	<div class="col-lg-10" >
+				<table class="table user-list">
+					<tbody>
+                    {% for i in visasFile %}
+						<tr>
+
+							<td>
+                                {% if i.visa_img.url|slice:"-3:" in "jpg" or i.visa_img.url|slice:"-3:" in "png" or i.visa_img.url|slice:"-4:" in "jpeg" or i.visa_img.url|slice:"-3:" in "bmp" %}
+								<img class="zoom" src="{{i.visa_img.url}}" alt="" style="width:100px;height:100px; border: 3px solid grey; margin-bottom:10px;margin-left:10px;">
+
+                                {% elif i.visa_img.url|slice:"-3:" in "pdf"%}
+                                <embed src="{{i.visa_img.url}}" type="application/pdf" height="300px" width="300px">
+                                {% endif %}
+
+							</td>
+
+							<td>
+                                <span style="padding:5px;"></span>
+								<a href="{{i.visa_img.url}}" class="btn btn-info"  download>
+									<span class="icon icon-download"> Download</span>{{i.visa}}
+								</a>
+
+                                <a href="/sairweb/visa_Filedelete/{{visa.0.visa_id}}/{{i.id}}" class="btn btn-danger">
+									<span class="icon icon-trash"> Delete</span>{{i.visa}}
+								</a>
+							</td>
+
+						</tr>
+                    {% endfor %}
+
+				</tbody>
+
+			</table>
+
+		</div>
+   </div>
+          <input type="file" name="visa_img" id="visa_img" class="form-control" multiple >
+    </div>
+
+
+
+
+      <button type="submit" class="btn btn-success" style="max-width: 100px; margin-left: 320px; margin-top:30px;">Update</button>
+
+  </form>
+
+
+    </div>
+
+</div>
+
+
+
+{% endblock %}
+
+
+{% block js %}
+
+
+{% endblock %}

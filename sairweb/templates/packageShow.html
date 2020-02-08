@@ -1,0 +1,270 @@
+{% extends 'basic.html' %}
+
+{% block css %}
+          .col-md-3
+          {
+          display: inline-block;
+          margin-left:60px;
+          }
+
+          .carousel-indicators .active {
+          background-color: blue;
+            }
+
+
+
+          body .carousel-indicator li{
+          background-color: blue;
+          }
+
+          body .carousel-indicators{
+          bottom: 0;
+          }
+
+          body .carousel-control-prev-icon,
+          body .carousel-control-next-icon{
+          background-color: #5d5d5d6e;
+
+          }
+
+
+
+           body .no-padding{
+           padding-left: 0,
+           padding-right: 0;
+           }
+
+{% endblock %}
+
+
+{% block body %}
+{% load static %}
+<div class="hero-wrap js" style="background-image: url({% static 'sairweb/images/package.jfif' %}); height:300px;">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js align-items-center justify-content-center"  data-scrollax-parent="true">
+          <div class="col-md-9 ftco-animate text-center" style="margin-top:140px;" data-scrollax=" properties: { translateY: '70%' }">
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Package Informations</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <section class="ftco-section ftco-degree-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 sidebar">
+
+            <div class="sidebar-wrap bg-light ftco-animate">
+              <h3 class="heading mb-4">Other packages</h3>
+
+                {% for i in latests %}
+                  <span class="icon icon-map-marker" style="padding-right:10px;">  </span> <a href="/sairweb/packages/{{i.id}}" style="font-size:17px;">{{i.pkg_name}}</a> </br>
+                {% endfor %}
+            </div>
+
+
+              <!---star test--->
+
+              <div class="sidebar-wrap bg-light ftco-animate">
+              <h3 class="heading mb-4">Star Rating</h3>
+              <form action="/sairweb/packageShow" method="post" class="star-rating">{% csrf_token %}
+
+
+                  <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="pstar1" value="1" id="st1" >
+                <label class="custom-control-label" for="st1"><p class="rate"><span><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p></label>
+                </div>
+
+                            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="pstar2" value="2" id="st2" >
+                <label class="custom-control-label" for="st2"><p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p></label>
+                </div>
+
+
+                  <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="pstar3" value="3" id="st3" >
+                <label class="custom-control-label" for="st3"><p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p></label>
+                </div>
+
+
+                  <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="pstar4" value="4" id="st4" >
+                <label class="custom-control-label" for="st4"><p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i></span></p></label>
+                </div>
+
+
+
+                <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="pstar5" value="5" id="st5" >
+                <label class="custom-control-label" for="st5"><p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span></p></label>
+                </div>
+
+
+
+                 <button class="btn btn-outline-danger btn-rounded btn-sm my-0" type="submit">Search</button>
+                  <a style="margin-left:10px;" class="btn btn-outline-danger btn-rounded btn-sm my-0" href="{% url 'packageShow' %}">Show all</a>
+
+              </form>
+            </div>
+
+
+              <!---star test End--->
+
+
+          </div>
+          <div class="col-lg-9">
+
+              <!-----package--->
+ <style>
+
+    .carousel-indicators .active {
+    background-color:grey; }
+
+    .carousel-indicators li{
+    background-color:#d0d0d0; }
+    .destination{
+        width:196px;
+    }
+
+</style>
+
+<div class="container" id="pkg">
+
+    <!--Slideshow starts here -->
+    {% for pk, range, nSlides in allpkg %}
+    <h5 class="my-4">Flash Sale On {{pk.0.pkg_dest_name}} - Recommended Items</h5>
+<div id="demo{{forloop.counter}}" class="carousel slide my-3" data-ride="carousel">
+    <ul class="carousel-indicators">
+      <li data-target="#demo{{forloop.counter}}" data-slide-to="0" class="active"></li>
+
+       {% for i in range %}
+      <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}" ></li>
+      {% endfor %}
+    </ul>
+
+
+    <div class="container carousel-inner no-padding">
+
+      <div class="carousel-item active">
+
+
+        {% for i in pk %}
+        <div class="col-xs-3 col-sm-3 col-md-3">
+           <div class="destination">
+       <a href="/sairweb/packages/{{i.id}}" class="img d-flex justify-content-center align-items-center" style="background-image: url(/media/{{i.pkg_img}});">
+    						<div class="icon d-flex justify-content-center align-items-center">
+    							<span class="icon-search2"></span>
+    						</div>
+    					</a>
+
+    					<div class="text p-3">
+    						<div class="d-flex">
+    							<div class="one">
+		    						<h3><a href="/sairweb/packages/{{i.id}}">{{i.pkg_name}},</a></h3>
+		    						<h3><a href="/sairweb/packages/{{i.id}}">{{i.pkg_dest_name}} </a></h3>
+		    						<p class="rate">
+										{% if i.pkg_rating == '5' %}
+											{% for j in x %}
+		    									<i class="icon-star"></i>
+											{% endfor %}
+										{% elif i.pkg_rating == '0' %}
+											{% for j in x %}
+		    									<i class="icon-star-o"></i>
+											{% endfor %}
+
+										{% elif i.pkg_rating == '1' %}
+											{% for j in '1' %}
+		    									<i class="icon-star"></i>
+											{% endfor %}
+											{% for j in '1234' %}
+		    									<i class="icon-star-o"></i>
+											{% endfor %}
+
+										{% elif i.pkg_rating == '2' %}
+											{% for j in '12' %}
+		    									<i class="icon-star"></i>
+											{% endfor %}
+											{% for j in '123' %}
+		    									<i class="icon-star-o"></i>
+											{% endfor %}
+
+										{% elif i.pkg_rating == '3' %}
+											{% for j in '123' %}
+		    									<i class="icon-star"></i>
+											{% endfor %}
+											{% for j in '12' %}
+		    									<i class="icon-star-o"></i>
+											{% endfor %}
+
+										{% elif i.pkg_rating == '4' %}
+											{% for j in '1234' %}
+		    									<i class="icon-star"></i>
+											{% endfor %}
+											{% for j in '1' %}
+		    									<i class="icon-star-o"></i>
+											{% endfor %}
+
+										{% endif %}
+		    							<span>{{i.pkg_rating}} Rating</span>
+		    						</p>
+	    						</div>
+	    						<div class="two">
+	    							<span class="price">৳{{i.pkg_price}}</span>
+    							</div>
+    						</div>
+    						<p>{{i.pkg_desc|slice:"0:20"}} . . .</p>
+    						<p class="days"><span>2 days 3 nights</span></p>
+    						<hr>
+    						<p class="bottom-area d-flex">
+    							<span class=""><a href="/sairweb/packages/{{i.id}}">Discover</a></span>
+    						</p>
+    					</div>
+          </div>
+        </div>
+        {% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last %}
+      </div><div class="carousel-item">
+        {% endif %}
+
+        {% endfor %}
+    </div>
+
+
+
+</div>
+</div>
+    <style>
+    .carousel-control-prev1,
+          .carousel-control-next1{
+          top: auto;
+          bottom: auto;
+          }
+    .carousel-control-prev1{
+        margin-left:-50px;
+        margin-bottom:400px;
+    }
+    .carousel-control-next1{
+        margin-left:900px;
+        position:absolute;
+    }
+    </style>
+    <!-- left and right controls for the slide -->
+    <a class="carousel-control-prev1" href="#demo{{forloop.counter}}" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next1" href="#demo{{forloop.counter}}" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+    {% endfor %}
+</div>
+
+<!-----Endpackage--->
+
+
+        </div>
+      </div>
+      </div>
+    </section> <!-- .section -->
+
+{% endblock %}

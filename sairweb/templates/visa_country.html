@@ -1,0 +1,186 @@
+{% extends 'basic.html' %}
+
+
+<style>
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+</style>
+
+
+{% block body%}
+
+{% load static %}
+
+<div class="hero-wrap js" style="background-image: url({% static 'sairweb/images/cc.jpg' %}); height:300px;">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js align-items-center justify-content-center"  data-scrollax-parent="true">
+          <div class="col-md-9 ftco-animate text-center" style="margin-top:140px;" data-scrollax=" properties: { translateY: '70%' }">
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Visa Requirements</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<h2 align="center" style="padding-top: 40px;">Select your country</h2>
+
+    <section class="ftco-section services-section bg-light" style="padding-bottom:35px; margin-top: 100px;">
+      <div class="container">
+
+            <div class="row" style="margin-left: 5px;">
+                  <div class="column" style="padding: 5px;">
+                      <div class="media block-6 services d-block text-center">
+                    <div class="card">
+                        <a href="/sairweb/visa_requirements/1">
+                      <div class="media-body p-2 mt-2">
+                          <h4 class="heading mb-3" align="center">Thiland</h4>
+                          <img src="{% static 'sairweb/images/thiland.jpg' %}" style="height: 120px; width: 200px; border-radius: 4%;">
+                      </div>
+                        </a>
+                    </div>
+                      </div>
+                  </div>
+
+                  <div class="column" style="padding: 5px;">
+                      <div class="media block-6 services d-block text-center">
+                    <div class="card">
+                        <a href="/sairweb/visa_requirements/2">
+                      <div class="media-body p-2 mt-2">
+                          <h4 class="heading mb-3" align="center">Malaysia</h4>
+                          <img src="{% static 'sairweb/images/malaysia.jpg' %}" style="height: 120px; width: 200px; border-radius: 4%;">
+                      </div>
+                        </a>
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="column" style="padding: 5px;">
+                      <div class="media block-6 services d-block text-center">
+                    <div class="card">
+                        <a href="/sairweb/visa_requirements/3">
+                      <div class="media-body p-2 mt-2">
+                          <h4 class="heading mb-3" align="center">Vietnam</h4>
+                          <img src="{% static 'sairweb/images/vietnam.jpg' %}" style="height: 120px; width: 200px; border-radius: 4%;">
+                      </div>
+                        </a>
+                    </div>
+                    </div>
+                  </div>
+
+                  <div class="column" style="padding: 5px;">
+                      <div class="media block-6 services d-block text-center">
+                    <div class="card">
+                        <a href="/sairweb/visa_requirements/4">
+                      <div class="media-body p-2 mt-2">
+                          <h4 class="heading mb-3" align="center">Singapore</h4>
+                          <img src="{% static 'sairweb/images/singapore.jpg' %}" style="height: 120px; width: 200px; border-radius: 4%;">
+                      </div>
+                        </a>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+
+      </div>
+
+
+            <div class="container" style="padding-top:100px;">
+
+            <div class="row" style="margin-left: 5px;">
+                  <div class="column" style="padding: 5px;">
+                      <div class="media block-6 services d-block text-center">
+                    <div class="card">
+                        <a href="/sairweb/visa_requirements/5">
+                      <div class="media-body p-2 mt-2">
+                          <h4 class="heading mb-3" align="center">China</h4>
+                          <img src="{% static 'sairweb/images/china.jpg' %}" style="height: 120px; width: 200px; border-radius: 4%;">
+                      </div>
+                        </a>
+                    </div>
+                      </div>
+                  </div>
+
+                  <div class="column" style="padding: 5px;">
+                      <div class="media block-6 services d-block text-center">
+                    <div class="card">
+                        <a href="/sairweb/visa_requirements/6">
+                      <div class="media-body p-2 mt-2">
+                          <h4 class="heading mb-3" align="center">Egypt</h4>
+                          <img src="{% static 'sairweb/images/egypt.png' %}" style="height: 120px; width: 200px; border-radius: 4%;">
+                      </div>
+                        </a>
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="column" style="padding: 5px;">
+                      <div class="media block-6 services d-block text-center">
+                    <div class="card">
+                        <a href="/sairweb/visa_requirements/7">
+                      <div class="media-body p-2 mt-2">
+                          <h4 class="heading mb-3" align="center">Myanmar</h4>
+                          <img src="{% static 'sairweb/images/mayanmar.jpg' %}" style="height: 120px; width: 200px; border-radius: 4%;">
+                      </div>
+                        </a>
+                    </div>
+                    </div>
+                  </div>
+
+                  <div class="column" style="padding: 5px;">
+                      <div class="media block-6 services d-block text-center">
+                    <div class="card">
+                        <a href="/sairweb/visa_requirements/8">
+                      <div class="media-body p-2 mt-2">
+                          <h4 class="heading mb-3" align="center">Srilanka</h4>
+                          <img src="{% static 'sairweb/images/srilanka.jpg' %}" style="height: 120px; width: 200px; border-radius: 4%;">
+                      </div>
+                        </a>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+
+      </div>
+
+    </section>
+
+{% endblock %}

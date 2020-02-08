@@ -1,0 +1,73 @@
+{% extends 'basic-dark.html' %}
+
+{% block body %}
+
+<h1 align="center">Hello!</h1>
+
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+</style>
+</head>
+<body>
+
+<h2 style="text-align:center"></h2>
+{% load static %}
+<div class="card" style="margin-bottom:30px;">
+  <img src="{% static 'sairweb/images/blank_profile.PNG' %}" alt="John" style="width:100%">
+  <h1>{{username}}</h1>
+  <p class="title">Admin</p>
+  <p>SAir AIR BD LTD.</p>
+
+  {% if type == 'Master' %}
+    <p><button><a href="/sairweb/modarator_list">Mange Modarators</a></button></p>
+    <p><button><a href="{% url 'destination_list' %}">Destination List</a></button></p>
+    <p><button><a href="{% url 'package_list' %}">Package List</a></button></p>
+    <p><button><a href="{% url 'visaTrackingList' %}">Visa User List </a></button></p>
+
+  {% elif type == 'Visa Moderator' %}
+    <p><button><a href="{% url 'visaTrackingList' %}">Visa User List </a></button></p>
+
+
+  {% elif type == 'Package/Destination Moderator' %}
+    <p><button><a href="{% url 'destination_list' %}">Destination List</a></button></p>
+    <p><button><a href="{% url 'package_list' %}">Package List</a></button></p>
+
+  {% elif type == '' %}
+    <div class="alert alert-danger">
+        <strong>&times; Please contact with master admin.</strong>
+    </div>
+
+  {% endif %}
+
+</div>
+
+{% endblock %}

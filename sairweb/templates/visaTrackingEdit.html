@@ -1,0 +1,197 @@
+{% extends 'basic.html' %}
+
+
+{% block body%}
+
+{% load static %}
+
+
+<div class="hero-wrap js" style="background-image: url({% static 'sairweb/images/track.jpg' %}); height:300px;">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js align-items-center justify-content-center"  data-scrollax-parent="true">
+          <div class="col-md-9 ftco-animate text-center" style="margin-top:140px;" data-scrollax=" properties: { translateY: '70%' }">
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Visa Application</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+<style>
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+  margin: auto;
+  padding:20px;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+</style>
+
+
+
+<div style="margin-top:50px; margin-bottom:100px;">
+
+<h1 style="text-align:center; font-weight: bold;">Information</h1>
+
+
+
+<div class="card">
+
+  <form enctype="multipart/form-data" method="post">{% csrf_token %}
+
+      <div class="form-group">
+
+       <label for="visa_id" >Reference No :</label>
+      <input class="form-control" id="visa_id" name='' value="{{newRef}}" required readonly>
+      </div>
+
+      <div class="form-group">
+
+       <label for="fname" >Full Name :</label>
+      <input class="form-control" id="fname" name='fname' required>
+      </div>
+
+      <div class="form-group">
+
+       <label for="contactNo" >Contact No :</label>
+      <input class="form-control" id="contactNo" name='contactNo' required >
+
+      </div>
+
+        <div class="form-group">
+
+          <label for="passport_no" >Passport Number :</label>
+      <input class="form-control" id="passport_no" name='passport_no' required>
+
+      </div>
+
+        <div class="form-group">
+
+          <label for="dob" >Date of Birth :</label>
+      <input class="form-control" type="date" id="dob" name='dob' required>
+
+      </div>
+
+        <div class="row">
+		 <div class="form-group col-md-6" style="padding-left: 15px;">
+             <label for="dob" >Visa Country :</label>
+			<div class="select-wrap one-third">
+			        <input class="form-control" type="text" list="vCountry1" name="vCountry" placeholder="Select Country"  />
+                        <datalist name="vCountry1" id="vCountry1">
+                        <option value="China">China</option>
+                        <option value="Egypt">Egypt</option>
+                        <option value="Malaysia">Malaysia</option>
+                        <option value="Mayanmar">Mayanmar</option>
+                        <option value="Singapore">Singapore</option>
+                        <option value="Srilanka">Srilanka</option>
+			            <option value="Thailand">Thailand</option>
+			            <option value="Vietnam">Vietnam</option>
+
+                        </datalist>
+			     </div>
+			</div>
+
+        <div class="form-group col-md-6" style="padding-right: 15px;">
+           <label for="dob" >Visa Type :</label>
+			<div class="select-wrap one-third">
+			        <input class="form-control" type="text" list="vtype1" id="visa_type" name='visa_type' required placeholder="Select Type"  />
+                        <datalist name="vtype1" id="vtype1">
+                        <option value="Tourist">Tourist</option>
+                        <option value="Business">Business</option>
+                        </datalist>
+			     </div>
+			</div>
+        </div>
+
+      <!--
+      <div class="form-group">
+
+          <label for="visa_type" >Visa Type :</label>
+      <input class="form-control" id="visa_type" name='visa_type' required>
+
+      </div>
+      -->
+
+        <div class="form-group">
+
+          <label >Visa Status :</label></br>
+
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="visa_status" value="1" id="received"  required>
+                <label class="custom-control-label" for="received">Client Submit</label>
+            </div>
+
+            <div class="custom-control custom-checkbox" style="display: none;">
+                <input type="checkbox" name="visa_status" value="2" class="custom-control-input" disabled="disabled" id="submit" >
+                <label class="custom-control-label"  for="submit">Submitted (Embassy)</label>
+            </div>
+
+            <div class="custom-control custom-checkbox" style="display: none;">
+                <input type="checkbox" class="custom-control-input" name="visa_status" value="3" disabled="disabled" id="collect" >
+                <label class="custom-control-label"  for="collect">Collected (Embassy)</label>
+            </div>
+
+            <div class="custom-control custom-checkbox" style="display: none;">
+                <input type="checkbox" class="custom-control-input" name="visa_status" value="4" disabled="disabled" id="delivered" >
+                <label class="custom-control-label" for="delivered">Delivered to client</label>
+            </div>
+
+
+      </div>
+
+
+
+      <div class="form-group">
+          <label for="visa_img" > Upload Files</label>
+          <input type="file" name="visa_img" id="visa_img" class="form-control" multiple required>
+      </div>
+
+      <div class="alert alert-info" role="alert">
+          <li>Please remember your reference number for further query</li>
+      </div>
+
+    <button type="submit" class="btn btn-success" style="max-width: 100px; margin-left: 320px; margin-top:30px;">Submit</button>
+
+  </form>
+
+
+    </div>
+
+</div>
+
+{% endblock %}

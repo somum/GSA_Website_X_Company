@@ -1,0 +1,582 @@
+{% extends 'basic.html' %}
+
+{% block css %}
+          .col-md-3
+          {
+          display: inline-block;
+          margin-left:-4px;
+          }
+
+          .carousel-indicators .active {
+          background-color: blue;
+            }
+
+
+
+          body .carousel-indicator li{
+          background-color: blue;
+          }
+
+          body .carousel-indicators{
+          bottom: 0;
+          }
+
+          body .carousel-control-prev-icon,
+          body .carousel-control-next-icon{
+          background-color: #5d5d5d6e;
+
+
+          }
+
+
+
+           body .no-padding{
+           padding-left: 0,
+           padding-right: 0;
+           }
+    <!---amar add kora---->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}">
+{% endblock %}
+
+{% block body %}
+{% load static %}
+
+<div id="carouselExampleIndicators"class="carousel slide" data-pause="hover" data-ride="carousel" style="padding-top: 0px;">
+  <ol class="carousel-indicators" style="padding-bottom:40px;">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+	<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="{% static 'sairweb/images/himalaya.jpg' %}" style="max-height: 530px;" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="{% static 'sairweb/images/nok.jpg' %}" style="max-height: 530px;" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="{% static 'sairweb/images/vietj.jpg' %}" style="max-height: 530px;" alt="Third slide">
+    </div>
+	  <div class="carousel-item">
+      <img class="d-block w-100" src="{% static 'sairweb/images/hospital.png' %}" style="max-height: 530px;" alt="Fourth slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" id="demoNavPrev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" id="demoNavNext" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<section class="ftco-section services-section bg-light">
+      <div class="container">
+        <div class="row d-flex">
+          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services d-block text-center">
+              <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-guarantee"></span></div></div>
+              <div class="media-body p-2 mt-2">
+                <h3 class="heading mb-3">Best Price Guarantee</h3>
+                <p>Make a trip operator to get to the most state-of-the-art data on the best way to get you the best esteem</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services d-block text-center">
+              <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-like"></span></div></div>
+              <div class="media-body p-2 mt-2">
+                <h3 class="heading mb-3">Travellers Love Us</h3>
+                <p>We value the commitment we make to our clients and to the industry</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services d-block text-center">
+              <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-detective"></span></div></div>
+              <div class="media-body p-2 mt-2">
+                <h3 class="heading mb-3">Best Travel Partner</h3>
+                <p>Best boutique tour companies to find the perfect travel specialists for you</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services d-block text-center">
+              <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-support"></span></div></div>
+              <div class="media-body p-2 mt-2">
+                <h3 class="heading mb-3">Our Dedicated Support</h3>
+                <p>We always work thinking of you, of your needs, but above all, of your expectations</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!----  Destination part --->
+
+    <section class="ftco-section ftco-destination" id="destination">
+    	<div class="container">
+    		<div class="row justify-content-start mb-5 pb-3">
+          <div class="col-md-7 heading-section ftco-animate">
+          	<span class="subheading">Featured</span>
+            <h2 class="mb-4"><strong>Featured</strong> Destination</h2>
+          </div>
+        </div>
+
+    		<div class="row">
+    			<div class="col-md-12">
+    				<div class="destination-slider owl-carousel ftco-animate">
+                        {% for i in destination %}
+    					<div class="item">
+		    				<div class="destination">
+		    					<a href="#pkg" class="img d-flex justify-content-center align-items-center" style="background-image: url(/media/{{i.dest_img}});">
+		    						<div class="icon d-flex justify-content-center align-items-center">
+		    							<span class="icon-search2"></span>
+		    						</div>
+		    					</a>
+		    					<div class="text p-3">
+		    						<h3><a href="#pkg">{{i.dest_name}}</a></h3>
+		    					</div>
+		    				</div>
+	    				</div>
+
+                        {% endfor %}
+
+    				</div>
+    			</div>
+
+
+    		</div>
+
+    	</div>
+    </section>
+
+    <!----End Destination part--->
+
+
+<!-----package--->
+ <style>
+
+    .carousel-indicators .active {
+    background-color:grey; }
+
+    .carousel-indicators li{
+    background-color:#d0d0d0; }
+
+
+</style>
+
+
+
+<div class="container" id="pkg">
+
+	<div class="row justify-content-start mb-5 pb-3">
+          <div class="col-md-7 heading-section ftco-animate">
+          	<span class="subheading">Featured</span>
+            <h2 class="mb-4"><strong>Featured</strong> Packages</h2>
+          </div>
+        </div>
+
+    <!--Slideshow starts here -->
+    {% for pk, range, nSlides in allpkg %}
+    <h5 class="my-4">{{pk.0.pkg_dest_name}} - Recommended Packages</h5>
+<div id="demo{{forloop.counter}}" class="carousel slide my-3" data-ride="carousel">
+    <ul class="carousel-indicators">
+      <li data-target="#demo{{forloop.counter}}" data-slide-to="0" class="active"></li>
+
+       {% for i in range %}
+      <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}" ></li>
+      {% endfor %}
+    </ul>
+
+
+    <div class="container carousel-inner no-padding">
+
+      <div class="carousel-item active">
+
+
+        {% for i in pk %}
+        <div class="col-xs-3 col-sm-3 col-md-3">
+           <div class="destination">
+       <a href="/sairweb/packages/{{i.id}}" class="img d-flex justify-content-center align-items-center" style="background-image: url(/media/{{i.pkg_img}});">
+    						<div class="icon d-flex justify-content-center align-items-center">
+    							<span class="icon-search2"></span>
+    						</div>
+    					</a>
+
+    					<div class="text p-3">
+    						<div class="d-flex">
+    							<div class="one">
+		    						<h3><a href="/sairweb/packages/{{i.id}}">{{i.pkg_name}},</a></h3>
+		    						<h3><a href="/sairweb/packages/{{i.id}}">{{i.pkg_dest_name}} </a></h3>
+		    						<p class="rate">
+										{% if i.pkg_rating == '5' %}
+											{% for j in x %}
+		    									<i class="icon-star"></i>
+											{% endfor %}
+										{% elif i.pkg_rating == '0' %}
+											{% for j in x %}
+		    									<i class="icon-star-o"></i>
+											{% endfor %}
+
+										{% elif i.pkg_rating == '1' %}
+											{% for j in '1' %}
+		    									<i class="icon-star"></i>
+											{% endfor %}
+											{% for j in '1234' %}
+		    									<i class="icon-star-o"></i>
+											{% endfor %}
+
+										{% elif i.pkg_rating == '2' %}
+											{% for j in '12' %}
+		    									<i class="icon-star"></i>
+											{% endfor %}
+											{% for j in '123' %}
+		    									<i class="icon-star-o"></i>
+											{% endfor %}
+
+										{% elif i.pkg_rating == '3' %}
+											{% for j in '123' %}
+		    									<i class="icon-star"></i>
+											{% endfor %}
+											{% for j in '12' %}
+		    									<i class="icon-star-o"></i>
+											{% endfor %}
+
+										{% elif i.pkg_rating == '4' %}
+											{% for j in '1234' %}
+		    									<i class="icon-star"></i>
+											{% endfor %}
+											{% for j in '1' %}
+		    									<i class="icon-star-o"></i>
+											{% endfor %}
+
+										{% endif %}
+		    							<span>{{i.pkg_rating}} Rating</span>
+		    						</p>
+	    						</div>
+	    						<div class="two">
+	    							<span class="price">৳{{i.pkg_price}}</span>
+    							</div>
+    						</div>
+    						<p>{{i.pkg_desc|slice:"0:20"}} . . .</p>
+    						<p class="days"><span>2 days 3 nights</span></p>
+    						<hr>
+    						<p class="bottom-area d-flex">
+    							<span class=""><a href="/sairweb/packages/{{i.id}}">Discover</a></span>
+    						</p>
+    					</div>
+          </div>
+        </div>
+        {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
+      </div><div class="carousel-item">
+        {% endif %}
+
+        {% endfor %}
+    </div>
+
+
+
+</div>
+</div>
+    <style>
+    .carousel-control-prev1,
+          .carousel-control-next1{
+          top: auto;
+          bottom: auto;
+          }
+    .carousel-control-prev1{
+        margin-left:-20px;
+        margin-bottom:400px;
+    }
+    .carousel-control-next1{
+        margin-left:1100px;
+        position:absolute;
+    }
+    </style>
+    <!-- left and right controls for the slide -->
+    <a class="carousel-control-prev1" href="#demo{{forloop.counter}}" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next1" href="#demo{{forloop.counter}}" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+    {% endfor %}
+</div>
+
+<!-----Endpackage--->
+
+
+<!--Start About us-->
+
+<section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url({% static 'sairweb/images/bg_1.jpg' %});">
+    	<div class="container">
+    		<div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+            <h2 class="mb-4">Facts about us</h2>
+            <span class="subheading">More than 100,000 flight hosted</span>
+          </div>
+        </div>
+    		<div class="row justify-content-center">
+    			<div class="col-md-10">
+		    		<div class="row">
+		          <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		                <strong class="number" data-number="100000">0</strong>
+		                <span>Happy Customers</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		                <strong class="number" data-number="10">0</strong>
+		                <span>Destination Places</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		                <strong class="number" data-number="9">0</strong>
+		                <span>Hotels</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		                <strong class="number" data-number="30">0</strong>
+		                <span>Restaurant</span>
+		              </div>
+		            </div>
+		          </div>
+		        </div>
+	        </div>
+        </div>
+    	</div>
+    </section>
+<!--End About us-->
+
+<!---why choose us & customer--->
+<section class="ftco-section ftco-destination">
+    	<div class="container">
+    		<div class="row justify-content-start mb-5 pb-3">
+          <div class="col-md-7 heading-section ftco-animate">
+            <h2 class="mb-4"><strong>Our</strong> Customers</h2>
+          </div>
+        </div>
+    		<div class="row">
+    			<div class="col-md-12">
+    				<div class="destination-slider owl-carousel ftco-animate">
+    					<div class="item">
+		    				<div class="destination">
+		    					<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url({% static 'sairweb/images/tetrapack.jpg' %}); ">
+		    					</a>
+		    				</div>
+						</div>
+						<div class="item">
+                            <div class="destination">
+		    					<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url({% static 'sairweb/images/ministry_of_finance.jpg' %});">
+		    						<div class="icon d-flex justify-content-center align-items-center">
+		    							<span class="icon-search2"></span>
+		    						</div>
+		    					</a>
+		    				</div>
+						</div>
+						<div class="item">
+                            <div class="destination">
+		    					<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url({% static 'sairweb/images/aviation_college.jpg' %}); ">
+		    						<div class="icon d-flex justify-content-center align-items-center">
+		    							<span class="icon-search2"></span>
+		    						</div>
+		    					</a>
+		    				</div>
+						</div>
+						<div class="item">
+                            <div class="destination">
+		    					<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url({% static 'sairweb/images/bangladesh_bank.png' %});">
+		    						<div class="icon d-flex justify-content-center align-items-center">
+		    							<span class="icon-search2"></span>
+		    						</div>
+		    					</a>
+		    				</div>
+						</div>
+						<div class="item">
+                            <div class="destination">
+		    					<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url({% static 'sairweb/images/rupalibank.jpg' %});">
+		    						<div class="icon d-flex justify-content-center align-items-center">
+		    							<span class="icon-search2"></span>
+		    						</div>
+		    					</a>
+		    				</div>
+						</div>
+						<div class="item">
+                            <div class="destination">
+		    					<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url({% static 'sairweb/images/phonix.png' %});">
+		    						<div class="icon d-flex justify-content-center align-items-center">
+		    							<span class="icon-search2"></span>
+		    						</div>
+		    					</a>
+		    				</div>
+						</div>
+						<div class="item">
+                            <div class="destination">
+		    					<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url({% static 'sairweb/images/iidfc.png' %});">
+		    						<div class="icon d-flex justify-content-center align-items-center">
+		    							<span class="icon-search2"></span>
+		    						</div>
+		    					</a>
+		    				</div>
+						</div>
+						<div class="item">
+                            <div class="destination">
+		    					<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url({% static 'sairweb/images/pioneer.png' %});">
+		    						<div class="icon d-flex justify-content-center align-items-center">
+		    							<span class="icon-search2"></span>
+		    						</div>
+		    					</a>
+		    				</div>
+						</div>
+						<div class="item">
+                            <div class="destination">
+		    					<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url({% static 'sairweb/images/urbandesign.png' %});">
+		    						<div class="icon d-flex justify-content-center align-items-center">
+		    							<span class="icon-search2"></span>
+		    						</div>
+		    					</a>
+		    				</div>
+						</div>
+						<div class="item">
+                            <div class="destination">
+		    					<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url({% static 'sairweb/images/sig.png' %});">
+		    						<div class="icon d-flex justify-content-center align-items-center">
+		    							<span class="icon-search2"></span>
+		    						</div>
+		    					</a>
+							</div>
+						</div>
+						<div class="item">
+                            <div class="destination">
+		    					<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url({% static 'sairweb/images/meghna_bank.jpg' %});">
+		    						<div class="icon d-flex justify-content-center align-items-center">
+		    							<span class="icon-search2"></span>
+		    						</div>
+		    					</a>
+		    				</div>
+						</div>
+						<div class="item">
+                            <div class="destination">
+		    					<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url({% static 'sairweb/images/idlc.png' %});">
+		    						<div class="icon d-flex justify-content-center align-items-center">
+		    							<span class="icon-search2"></span>
+		    						</div>
+		    					</a>
+		    				</div>
+						</div>
+						<div class="item">
+                            <div class="destination">
+		    					<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url({% static 'sairweb/images/mashrec.jpg' %});">
+		    						<div class="icon d-flex justify-content-center align-items-center">
+		    							<span class="icon-search2"></span>
+		    						</div>
+		    					</a>
+		    				</div>
+						</div>
+						<div class="item">
+                            <div class="destination">
+		    					<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url({% static 'sairweb/images/wellsfargo.png' %});">
+		    						<div class="icon d-flex justify-content-center align-items-center">
+		    							<span class="icon-search2"></span>
+		    						</div>
+		    					</a>
+		    				</div>
+						</div>
+						<div class="item">
+                            <div class="destination">
+		    					<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url({% static 'sairweb/images/pfi.jpg' %});">
+		    						<div class="icon d-flex justify-content-center align-items-center">
+		    							<span class="icon-search2"></span>
+		    						</div>
+		    					</a>
+		    				</div>
+	    				</div>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </section>
+
+	<section class="ftco-section testimony-section bg-light">
+      <div class="container">
+        <div class="row justify-content-start">
+          <div class="col-md-5 heading-section ftco-animate">
+            <h2 class="mb-4 pb-3"><strong>Why</strong> Choose Us?</h2>
+            <p>SAir AIR BD provides one of best travel experiences in south asia.
+				We offer affordable prices and well-planned tours featuring friendly and experienced guides.
+				We’re committed to providing travelers with an amazing experience every time.</p>
+
+            <p><a href="{% url 'about' %}" class="btn btn-primary btn-outline-primary mt-4 px-4 py-3">Read more</a></p>
+          </div>
+					<div class="col-md-1"></div>
+          <div class="col-md-6 heading-section ftco-animate">
+            <h2 class="mb-4 pb-3"><strong>Our</strong> Customer Says</h2>
+          	<div class="row ftco-animate">
+		          <div class="col-md-12">
+		            <div class="carousel-testimony owl-carousel">
+		              <div class="item">
+		                <div class="testimony-wrap d-flex">
+		                  <div class="user-img mb-5" style="background-image: url({% static 'sairweb/images/' %})">
+		                    <span class="quote d-flex align-items-center justify-content-center">
+		                      <i class="icon-quote-left"></i>
+		                    </span>
+		                  </div>
+		                  <div class="text ml-md-4">
+		                    <p class="mb-5">This travel company exceeded our expectations. The trip is one we will never forget.
+								The travel planners were always available to answer questions before and during our trip.</p>
+		                    <p class="name">Naved Alam</p>
+		                    <span class="position">Guest from Bangladesh</span>
+		                  </div>
+		                </div>
+		              </div>
+		              <div class="item">
+		                <div class="testimony-wrap d-flex">
+		                  <div class="user-img mb-5" style="background-image: url({% static 'sairweb/images/' %})">
+		                    <span class="quote d-flex align-items-center justify-content-center">
+		                      <i class="icon-quote-left"></i>
+		                    </span>
+		                  </div>
+		                  <div class="text ml-md-4">
+		                    <p class="mb-5">Great experience by luxury riads and excellent food. Excellent navigation of the key places in Nepal. </p>
+		                    <p class="name">Chris K.</p>
+		                    <span class="position">Guest from London</span>
+		                  </div>
+		                </div>
+		              </div>
+		              <div class="item">
+		                <div class="testimony-wrap d-flex">
+		                  <div class="user-img mb-5" style="background-image: url({% static 'sairweb/images/' %})">
+		                    <span class="quote d-flex align-items-center justify-content-center">
+		                      <i class="icon-quote-left"></i>
+		                    </span>
+		                  </div>
+		                  <div class="text ml-md-4">
+		                    <p class="mb-5">Every interaction with this tour company was perfect.  The staff was kind, responsive and helpful.  </p>
+		                    <p class="name">Myra S.</p>
+		                    <span class="position">Guest from Philippines</span>
+		                  </div>
+		                </div>
+		              </div>
+		            </div>
+		          </div>
+		        </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+{% endblock %}

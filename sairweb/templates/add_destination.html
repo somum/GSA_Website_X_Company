@@ -1,0 +1,32 @@
+{% extends 'basic-dark.html' %}
+
+{% block body %}
+<div class="container"  style="margin-bottom:200px; margin-top:100px;">
+ <h1><b>Add Destination</b></h1>
+ <div class="col-lg-3"></div>
+ <div class="col-lg-6" >
+  <form enctype="multipart/form-data" method="post">{% csrf_token %}
+    <div class="form-group">
+      <label for="dest_name" > Destination Name</label>
+      <input type="text" class="form-control" id="dest_name" name='dest_name' placeholder="Enter Name">
+    </div>
+
+      <div class="form-group">
+      <label for="dest_name" > Destination Description</label>
+      <textarea class="form-control" id="dest_desc" name='dest_desc' placeholder="Enter destination description"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="dest_img" > Image of Destination</label>
+      <input type="file" name="dest_img" id="dest_img" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+<div class="col-lg-3"></div>
+</div>
+
+
+</div>
+{% endblock %}
